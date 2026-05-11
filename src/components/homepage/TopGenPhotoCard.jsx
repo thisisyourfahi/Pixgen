@@ -1,5 +1,6 @@
 import { Button, Card, Chip, Separator } from '@heroui/react';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import { FaHeart } from 'react-icons/fa';
 import { PiDownloadSimpleBold } from 'react-icons/pi';
@@ -20,14 +21,16 @@ const TopGenPhotoCard = ({ photo }) => {
                         <FaHeart />
                         <p>{photo.likes}</p>
                     </div>
-                    <Separator orientation='vertical'/>
+                    <Separator orientation='vertical' />
                     <div className='flex items-center gap-2'>
                         <PiDownloadSimpleBold />
                         <p>{photo.downloads}</p>
                     </div>
                 </div>
             </div>
-            <Button variant='outline' className={'w-full'}>View</Button>
+            <Link href={`/all-photos/${photo.id}`}>
+                <Button variant='outline' className={'w-full'}>View</Button>
+            </Link>
         </Card>
     );
 };
