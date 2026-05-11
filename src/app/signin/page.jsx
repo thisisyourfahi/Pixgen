@@ -11,6 +11,7 @@ import {
     TextField,
 } from "@heroui/react";
 import { redirect, useRouter } from "next/navigation";
+import { FaGoogle } from "react-icons/fa";
 
 export default function SignInPage() {
     const router = useRouter();
@@ -34,6 +35,12 @@ export default function SignInPage() {
             router.push('/')
         }
     };
+
+    const handleGoogleSignIn = async () => {
+        const {data, error} = await authClient.signIn.social({
+            provider: 'google'
+        })
+    }
 
     return (
         <Card className="border mx-auto w-125 py-10 mt-5">
@@ -90,6 +97,15 @@ export default function SignInPage() {
                     </Button>
                     <Button type="reset" variant="secondary">
                         Reset
+                    </Button>
+                </div>
+
+                {/* googli sign in */}
+                <div className="text-center space-y-4">
+                    <p className="text-2xl font-bold">Or</p>
+                    <Button className={'w-full'} variant="outline" onClick={handleGoogleSignIn}>
+                        <FaGoogle />
+                        Sign In With Google
                     </Button>
                 </div>
             </Form>
