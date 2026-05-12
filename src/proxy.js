@@ -10,6 +10,7 @@ export async function proxy(request) {
   if (!session) {
     return NextResponse.redirect(new URL('/signin', request.url))
   }
+  return NextResponse.next();
 }
 
 // Alternatively, you can use a default export:
